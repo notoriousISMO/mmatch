@@ -1,0 +1,15 @@
+.center.navbar .nav,
+.center.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    vertical-align: top;
+}
+.center .navbar-inner {
+    text-align:center;
+}
+.navbar-custom {
+    background-color:#229922;
+    color:#229922;
+    border-radius:0;
+}
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus { text-decoration: none; background-color: #229922; }
