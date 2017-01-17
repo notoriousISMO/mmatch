@@ -1,20 +1,64 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ACCUEIL :: CLUB JUDO LÉVIS</title>
+        <title>MMAtch</title>
 		<meta charset="ISO-8859-1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/swag.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+           <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
     </head>
     <body>
-      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js">
-	</script>
-	
+   
+    <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 6
+  });
+  var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTfNGtu4Kx7aL3hhQxg4s1XYdcF-ZLPmA&signed_in=true&callback=initMap"
+        async defer>
+    </script>
+
        <div class="navbar navbar-custom navbar-fixed-top center" >
 <div class="navbar-inner">
     <ul class="nav">
@@ -22,9 +66,9 @@
     </ul>
 </div>
 </div>
-<div class = "container">
+<div class = "container-fluid">
 			<div class = "row">
-				<div class = "col-md-3 offset-md-4">
+				<div class = "col-md-3 col-md-offset-1">
 				<center>
 			<br><br><br><br><br><h2>Sign Up Below!</h2>
 			<form action="#" method="POST">
@@ -38,7 +82,14 @@
 				<button class="btn btn-success" onclick="$(this).hide();">Submit</button>
 			</form>
 			</center>
+			</div>
+            <div class="col-md-5 col-md-offset-1">
+  		<div id="map"></div>
+            </div>
 		</div>
+		</div>
+	
+		
 
 	</body>
 	</html>
